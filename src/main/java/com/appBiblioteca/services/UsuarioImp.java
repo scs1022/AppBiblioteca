@@ -69,9 +69,9 @@ public class UsuarioImp implements IUsuario{
         for (Usuario usuario1 : usuarios) {
             
             System.out.println(usuario1.getCorreo());
-            //if((usuario.getCorreo().equals(usuario1.getCorreo()))&&(usuario.getClave().equals(usuario1.getClave()))){
-              //  return true;
-            //}
+            if((usuario.getCorreo().equals(usuario1.getCorreo()))&&(usuario.getClave().equals(usuario1.getClave()))){
+                return true;
+            }
         }
   
         

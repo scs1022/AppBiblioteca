@@ -24,7 +24,9 @@ public class AutenticarController {
     
     @GetMapping("/autenticar")
     public String getAutenticar(Model modelo) {
-        modelo.addAttribute(modelo);
+        Usuario usua =new Usuario();
+//        usua.setCorreo("ola@22");
+        modelo.addAttribute("user", usua);
         return "autenticar";
     }
     
@@ -40,8 +42,9 @@ public class AutenticarController {
     }
     
     @PostMapping("/autentica")
-    public String autenticar(@ModelAttribute("usuario") Usuario  usuarioDTO) {
+    public String autenticar(@ModelAttribute("user") Usuario  usuarioDTO) {
         
+        System.out.println("Esot");
         System.out.println(usuarioDTO.getCorreo());
         if (!usuario.autenticar(usuarioDTO)) {
             System.out.println(usuarioDTO);
