@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Registro de Usuario</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" th:href="@{/}">Biblioteca Central</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" th:href="@{/autenticar}">Iniciar Sesión</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <br><br>
+
+    <center>
+
+
+        <div class="container">
+
+            <h1>Registro Usuario</h1>
+
+            <div class="col-md-6 col-md-offset-3">
+                <div th:if=${param.exito}>
+                    <div class="alert alert-info">Se ha registrado exitosamente a
+                        la Biblioteca</div>
+                </div>
+                <div th:if=${param.error}>
+                    <div class="alert alert-danger">Error en el registro</div>
+                </div>
+                <form th:action="@{/registrar}" method="post" th:object="${usuario}">
+                    <div class="mb-3">
+                        <label  class="form-label">Nombre:</label>
+                        <input type="text" class="form-control"  required autofocus="autofocus" placeholder="Digite su nombre" th:field="*{nombre}">
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Documento:</label>
+                        <input type="number" class="form-control"  required autofocus="autofocus" placeholder="Digite su núemro de documento" th:field="*{id}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required autofocus="autofocus" placeholder="Digite su email" th:field="*{correo}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Clave:</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" autofocus="autofocus" placeholder="Digite su clave" th:field="*{clave}">
+                    </div>  
+                    <button type="submit" class="btn btn-primary">Registrarme</button>
+                    <div class="form-group">
+                        <br><br>
+                        <span>Si eres usuario registrado <a th:href="@{/autenticar}">Iniciar Sesión</a></span>
+                    </div>
+                </form>
+            </div>  
+        </div>
+
+
+
+
+    </center>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    
+</body>
+</html>
+
+
+
