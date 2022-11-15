@@ -1,15 +1,21 @@
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
     <head>
-        <title>App Biblioteca</title>
+        <title>Libros y Revistas para Reserva</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 
     </head>
-    <body>
 
+
+    <body>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#" th:href="@{/}">Biblioteca Central</a>
@@ -21,6 +27,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#" th:href="@{/autenticar}">Iniciar Sesión</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Libros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Revistas</a>
+                        </li>
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
@@ -31,29 +43,33 @@
         </nav>
 
 
-
-        <br>
-        <br>
-        <div class="container">
-            <h1>
-                <p style="text-align:center;">BIBLIOTECA CENTRAL</p>
-            </h1>
-            <br>
-            <h3>
-                <p style="text-align:center;">Bienvenido <span sec:authentication="principal.username"></span></p>
-            </h3>
-
-            <br> <br>
-
-
-        </div>
-
-        <p style="text-align:center;"><img src="https://images.vexels.com/media/users/3/286686/isolated/preview/4058c3884daba4ec6d23de3bd7a7f1b6-libros-de-trazo-de-color-de-estante.png" alt="Logo InternetCtrl"></p>
-
+        </br><br>
 
 
     <center>
-        <a class="btn btn-primary" href="#" role="button" th:href="@{/listar}">listar</a>
+        <h1>Libros y Revistas Disponobles</h1>
+
+        </br><br>
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col mb-2 p-2" th:each="articulo : ${Articulos}">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title fs-2" th:text="${articulo.nombre}"></h5>
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="${articulo.autor}"></h6>
+                            <p class="card-text" th:text="${articulo.estado}"></p>
+                            <a href="#" class="card-link">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </br><br>
+
+
     </center>
 
 
@@ -62,5 +78,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </body>
 
-</html>
 
+
+</html>
