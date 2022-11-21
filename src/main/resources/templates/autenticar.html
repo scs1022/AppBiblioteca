@@ -26,6 +26,8 @@
                 </div>
             </div>
         </nav>
+        
+    
 
         <br><br>
 
@@ -44,14 +46,14 @@
                 <div th:if=${param.error}>
                     <div class="alert alert-danger">Error en autenticación</div>
                 </div>
-                <form th:action="@{/autentica}" method="post" th:object="${usuario}">
+                <form th:action="@{/autentica}" method="post" th:object="${user}">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required autofocus="autofocus" placeholder="Digite su email">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required autofocus="autofocus" placeholder="Digite su email" th:field="*{correo}">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Clave:</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" autofocus="autofocus" placeholder="Digite su clave">           
+                        <input type="password" class="form-control" id="exampleInputPassword1" autofocus="autofocus" placeholder="Digite su clave" th:field="*{clave}">           
                     </div>  
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                     <div class="form-group">
