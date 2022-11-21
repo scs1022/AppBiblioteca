@@ -7,6 +7,7 @@ package com.appBiblioteca.services;
 import com.appBiblioteca.entity.Articulo;
 import com.appBiblioteca.repository.ArticulosRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,15 @@ public class ArticuloImp implements IArticulo{
     public List<Articulo> listarTodosArticulos() {
         return repositorio.findAll();
     }
-    
+
+    @Override
+    public Optional<Articulo> buscarPorId(Long id) {
+        return repositorio.findById(id);
+    }
+
+    @Override
+    public void guardarArticulo(Articulo arti) {
+        repositorio.save(arti);
+    }
+
 }
