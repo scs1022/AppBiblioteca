@@ -6,7 +6,9 @@ package com.appBiblioteca.controller;
  */
 
 
+import com.appBiblioteca.entity.Articulo;
 import com.appBiblioteca.entity.Usuario;
+import com.appBiblioteca.services.IArticulo;
 import com.appBiblioteca.services.IUsuario;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -21,7 +24,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AutenticarController {
     @Autowired IUsuario usuario;
     
-    
+@Autowired
+    private IArticulo serviceArticulo;   
+
     @GetMapping("/autenticar")
     public String getAutenticar(Model modelo) {
         Usuario usua =new Usuario();
@@ -30,15 +35,19 @@ public class AutenticarController {
         return "autenticar";
     }
     
-    @GetMapping("/autenticarOK")
-    public String verPaginaDeInicio(Model modelo) {
-        System.out.println("Modelo ");
+    @GetMapping("/autenticarOK/{id}")
+    public String verPaginaDeInicio(@PathVariable String id , Model modelo) {
+        System.out.println("id = " + id);
+        System.out.println("Modelo ");  
         System.out.println(modelo.getAttribute("username"));
         
-        List<Usuario> usuarios = usuario.readUsuarios();
-        modelo.addAttribute("usuarios", usuarios);
+        Usuario user = usuario.buscarPorId(Long.parseLong(id)).get();
+        
+        List<Articulo> arti = serviceArticulo.listarTodosArticulos();
+        modelo.addAttribute("arti", arti);
+        modelo.addAttribute("user",user);
             //modelo.addAttribute("estudiantes", servicioEstudiante.ConsultaTodos());
-        return "index";
+        return "listar";
     }
     
     @PostMapping("/autentica")
@@ -50,6 +59,10 @@ public class AutenticarController {
             System.out.println(usuarioDTO);
             return "redirect:/autenticar?error";
 
+        }
+        Usuario usua= usuario.buscarPorCorreo(usuarioDTO.getCorreo());
+        if(usua!=null){
+            return "redirect:/autenticarOK/"+usua.getId();
         }
         return "redirect:/autenticarOK";
             

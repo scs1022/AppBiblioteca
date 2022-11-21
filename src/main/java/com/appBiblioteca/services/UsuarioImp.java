@@ -7,6 +7,7 @@ package com.appBiblioteca.services;
 import com.appBiblioteca.entity.Usuario;
 import com.appBiblioteca.repository.UsuarioRepository;
 import java.util.List;
+import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -89,6 +90,23 @@ public class UsuarioImp implements IUsuario{
 //        }
                     
         return false;
+    }
+
+   
+    @Override
+    public Usuario buscarPorCorreo(String correo) {
+         List<Usuario> usuarios = usuarioRepository.findAll();
+         for (Usuario usuario : usuarios) {
+            if(correo.equals(usuario.getCorreo())){
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Optional<Usuario> buscarPorId(Long id) {
+           return usuarioRepository.findById(id);
     }
 
 }

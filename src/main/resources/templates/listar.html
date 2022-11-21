@@ -17,27 +17,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
     <body>
         <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#" th:href="@{/}">Biblioteca Central</a>
+            <div class="container-fluid container">
+                <div th:if=${param.exito}>
+                    <div class="alert alert-info">Se ha generado exitosamente la
+                        reserva</div>
+                </div>
+                <div th:if=${param.error}>
+                    <div class="alert alert-danger">Error la reserva</div>
+                </div>
+                <a class="navbar-brand" href="#" th:text="${'Bienvenido a la biblioteca '+user.nombre}"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#" th:href="@{/autenticar}">Iniciar Sesión</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Libros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Revistas</a>
+                            <a class="nav-link active" aria-current="page" href="#" th:href="@{/autenticar}">Cerrar Sesión</a>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -47,19 +44,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
     <center>
-        <h1>Libros y Revistas Disponobles</h1>
+        
+        <h1>Libros y Revistas Disponibles</h1>
 
         </br><br>
 
         <div class="container text-center">
             <div class="row">
-                <div class="col mb-2 p-2" th:each="articulo : ${Articulos}">
-                    <div class="card" style="width: 18rem;">
+                <div class="col mb-2 p-2" th:if="${articulo.estado != false}" th:each="articulo : ${arti}">
+                    <div class="card" style="width: 18rem;"  method="post" th:object="${articulo}">
                         <div class="card-body">
                             <h5 class="card-title fs-2" th:text="${articulo.nombre}"></h5>
                             <h6 class="card-subtitle mb-2 text-muted" th:text="${articulo.autor}"></h6>
-                            <p class="card-text" th:text="${articulo.estado}"></p>
-                            <a href="#" class="card-link">Reservar</a>
+                            <a type="submit" class="card-link" th:href="@{/reserva/}+${articulo.id}+'/'+${user.id}">Reservar</a>
                         </div>
                     </div>
                 </div>

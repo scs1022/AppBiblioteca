@@ -27,10 +27,10 @@ public class RegistroController {
     IUsuario usuarioService;
 
     @PostMapping("/registrar")
-    public String registrarUsuario(@ModelAttribute("usuario") Usuario estudianteDTO) {
+    public String registrarUsuario(@ModelAttribute("usuario") Usuario usuarioDTO) {
 
-        if (usuarioService.crearUsuario(estudianteDTO)) {
-            System.out.println(estudianteDTO);
+        if (usuarioService.crearUsuario(usuarioDTO)) {
+            System.out.println(usuarioDTO);
             return "redirect:/registro?exito";
         }
         return "redirect:/registro?error";

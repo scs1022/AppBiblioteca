@@ -4,8 +4,8 @@
  */
 package com.appBiblioteca.repository;
 
-import com.appBiblioteca.entity.Articulo;
-import java.util.List;
+
+import com.appBiblioteca.entity.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author santi
  */
 @Repository
-public interface ArticulosRepository extends JpaRepository<Articulo, Long> {
-
+public interface ReservaRepository extends JpaRepository<Reserva, Long>{
+    
 }
