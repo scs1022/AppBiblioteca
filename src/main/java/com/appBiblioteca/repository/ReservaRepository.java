@@ -6,6 +6,7 @@ package com.appBiblioteca.repository;
 
 
 import com.appBiblioteca.entity.Reserva;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
