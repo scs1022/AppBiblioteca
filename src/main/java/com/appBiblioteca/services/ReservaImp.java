@@ -4,12 +4,16 @@
  */
 package com.appBiblioteca.services;
 
+import com.appBiblioteca.entity.Articulo;
 import com.appBiblioteca.entity.Reserva;
 import com.appBiblioteca.repository.ReservaRepository;
+import java.util.List;
+import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.Repository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,4 +34,15 @@ public class ReservaImp implements IReserva{
     public void crearReserva(Reserva reserva) {
         reservaRepository.save(reserva);
     }
+
+//    @Override
+//    public Optional<Reserva> buscarPorIdArticulo(String id_user) {
+//           return reservaRepository.findBy("id_usuario", id_user);
+//    }
+
+    @Override
+    public List<Reserva> listarTodasReservas() {
+        return reservaRepository.findAll();
+    }
+
 }
