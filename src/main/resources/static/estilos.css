@@ -4,3 +4,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 
 
+.stilotargeta:hover{
+    border-color: #000000;
+    opacity: 0.8;
+}
+.fondo{
+    background-image:url("https://img.freepik.com/foto-gratis/concepto-material-rasgunado-muro-cemento-textura-fondo_53876-42915.jpg?w=2000");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

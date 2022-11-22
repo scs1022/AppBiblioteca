@@ -23,4 +23,7 @@ public interface IReserva {
     //public Optional<Reserva> buscarPorIdArticulo(String id);
 
     //public Optional<Reserva> buscarPorIdArticulo(String id_user);
+    public void guardarReserva(Reserva rese);
+    public void eliminarReserva(Reserva rese);
+    public Optional<Reserva> buscarPorId(Long id);
 }

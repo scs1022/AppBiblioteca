@@ -44,5 +44,21 @@ public class ReservaImp implements IReserva{
     public List<Reserva> listarTodasReservas() {
         return reservaRepository.findAll();
     }
+    
+    @Override
+    public Optional<Reserva> buscarPorId(Long id) {
+        return reservaRepository.findById(id);
+    }
+    
+    @Override
+    public void guardarReserva(Reserva rese) {
+        reservaRepository.save(rese);
+    }
+    
+    @Override
+    public void eliminarReserva(Reserva rese) {
+        reservaRepository.delete(rese);
+    }
+
 
 }

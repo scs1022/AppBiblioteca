@@ -5,31 +5,27 @@
 package com.appBiblioteca.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+/**
+ *
+ * @author santi
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="articulos")
-public class Articulo implements Serializable {
-    
+@Table(name="administradores")
+public class Administrador implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "serial")
     private Long id;
 
     private String nombre;
-    private String autor;   
-    private boolean estado;
-    private String urlimage;
+    private String correo;  
+    private String clave;
 }
