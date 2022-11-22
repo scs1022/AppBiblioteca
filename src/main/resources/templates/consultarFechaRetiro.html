@@ -19,7 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <h4 class="alert-heading" th:text="${usur.nombre+'!'+' Información de Fechas de Retiro'}"></h4>
 
                 <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item" th:if="${usur.id==reserva.usuario_id.id}" th:each="reserva : ${reser}">
+                    <div class="accordion-item" th:if="${(usur.id==reserva.usuario_id.id)&&(reserva.fechaEntrega == null)}" th:each="reserva : ${reser}">
                         <h2 class="accordion-header" id="flush-headingOne">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" th:text="${reserva.articulo_id.nombre}">
                             </button>
