@@ -29,7 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </nav>
 
 
-        </br><br>
+
         <div class="container text-center">
 
             <br><br>
@@ -49,7 +49,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <h6 class="card-subtitle mb-2 text-muted" th:text="${reser.articulo_id.autor}"></h6>
                                 <h6 class="card-subtitle mb-2 text-muted" th:text="${reser.usuario_id.id}"></h6>
                                 <h6 class="card-subtitle mb-2 text-muted" th:text="${reser.usuario_id.nombre}"></h6>
-                                <a type="submit" class="card-link" th:href="@{/marcarRegistro/}+${reser.articulo_id.id}+'/'+${reser.usuario_id.id}+'/'+${reser.id}">Marcar Retiro</a>
+                                <a type="submit" class="card-link" th:href="@{/marcarRegistro/}+${reser.articulo_id.id}+'/'+${reser.usuario_id.id}+'/'+${reser.id}+'/'+${admin.id}">Marcar Retiro</a>
                             </div>
                         </div>
                     </div>

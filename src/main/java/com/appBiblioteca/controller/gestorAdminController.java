@@ -41,8 +41,8 @@ public class gestorAdminController {
     
     
  
-    @GetMapping("/marcarRegistro/{id_arti}/{id_user}/{id_reser}")
-    public String marcarRetiro(@PathVariable String id_arti, @PathVariable String id_user, @PathVariable String id_reser, Model modelo) {
+    @GetMapping("/marcarRegistro/{id_arti}/{id_user}/{id_reser}/{id_admin}")
+    public String marcarRetiro(@PathVariable String id_arti, @PathVariable String id_user, @PathVariable String id_reser,@PathVariable String id_admin, Model modelo) {
         
         Date date = Date.from(Instant.now());
         LocalDateTime fechaActual = LocalDateTime.now();
@@ -55,20 +55,21 @@ public class gestorAdminController {
         
         
         
-        
+        Administrador admi =serviceAdministrador.buscarPorId(Long.parseLong(id_admin)).get();
         Usuario user = serviceUsuarior.buscarPorId(Long.parseLong(id_user)).get();
         
         Articulo articulo = serviceArticulo.buscarPorId(Long.parseLong(id_arti)).get();
         modelo.addAttribute("arti", articulo);
         modelo.addAttribute("usur",user);
         modelo.addAttribute("reser",rese);
+        modelo.addAttribute("admin",admi);
         return "retiroInfo";
 
     }
     
     
-    @GetMapping("/marcarEntrega/{id_arti}/{id_user}/{id_reser}")
-    public String marcarEntrega(@PathVariable String id_arti, @PathVariable String id_user, @PathVariable String id_reser, Model modelo) {
+    @GetMapping("/marcarEntrega/{id_arti}/{id_user}/{id_reser}/{id_admin}")
+    public String marcarEntrega(@PathVariable String id_arti, @PathVariable String id_user, @PathVariable String id_reser,@PathVariable String id_admin, Model modelo) {
         
         Reserva rese = serviceReserva.buscarPorId(Long.parseLong(id_reser)).get();
         serviceReserva.eliminarReserva(rese);
@@ -80,7 +81,7 @@ public class gestorAdminController {
         
         
         
-        
+        Administrador admi =serviceAdministrador.buscarPorId(Long.parseLong(id_admin)).get();
         
         
         Usuario user = serviceUsuarior.buscarPorId(Long.parseLong(id_user)).get();
@@ -89,7 +90,8 @@ public class gestorAdminController {
         modelo.addAttribute("arti", articulo);
         modelo.addAttribute("usur",user);
         modelo.addAttribute("reser",rese);
-        return "retiroInfo";
+          modelo.addAttribute("admin",admi);
+        return "entregaInfo";
 
     }
     
