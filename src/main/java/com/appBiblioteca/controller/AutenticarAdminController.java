@@ -71,7 +71,7 @@ public class AutenticarAdminController {
 
         }
         Administrador admin= serviceAdministrador.buscarPorCorreo(administradorDTO.getCorreo());
-        if(admin!=null){
+        if(admin!=null){    
             return "redirect:/marcarRetiro/"+admin.getId();
         }
         return "redirect:/autenticarAdminOK";
