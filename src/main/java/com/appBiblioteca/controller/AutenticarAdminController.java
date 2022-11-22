@@ -45,6 +45,8 @@ public class AutenticarAdminController {
         return "gestorAdmin";
     }
     
+    
+    
      @GetMapping("/marcarEntrega/{id}")
     public String verPaginaMarcarEntregas(@PathVariable String id , Model modelo) {
         System.out.println("id = " + id);
